@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "title": "Mutton Standard 1 Kg",
+        "price": 250.99,
+        "img": "https://i.ibb.co/k8W0yqY/lamb-meat.png"
+    },
+    {
+        "id": 2,
+        "title": "Beaf Premium 1kg",
+        "price": 120.99,
+        "img": "https://i.ibb.co/zrcrGhV/meat2.png"
+    },
+    {
+        "id": 3,
+        "title": "Igloo Container 1 Litre",
+        "price": 45.99,
+        "img": "https://i.ibb.co/9NBgPSk/Rectangle-37.png"
+    },
+    {
+        "id": 4,
+        "title": "Fresh Soyabean Oil 5Ltr",
+        "price": 10.99,
+        "img": "https://i.ibb.co/0CjXNHk/oil.png"
+    },
+    {
+        "id": 5,
+        "title": "Malta (Kg) 1 Kg",
+        "price": 20.99,
+        "img": "https://i.ibb.co/HK9ScVS/orange.png"
+    },
+    {
+        "id": 6,
+        "title": "Murgir Keema 1 Kg",
+        "price": 35.99,
+        "img": "https://i.ibb.co/vw1F7kn/meat3.png"
+    },
+    {
+        "id": 7,
+        "title": "Apple Fuji(P)Kg 1 Kg",
+        "price": 15.99,
+        "img": "https://i.ibb.co/zJhtdcN/apple.png"
+    },
+    {
+        "id": 8,
+        "title": "Maxi Puppy Dog Food",
+        "price": 10.99,
+        "img": "https://i.ibb.co/7VZh21j/maxi.png"
+    },
+    {
+        "id": 9,
+        "title": "Just Coco Coconut Conditioner",
+        "price": 19.99,
+        "img": "https://i.ibb.co/BrGZbsp/conditioner.png"
+    },
+    {
+        "id": 10,
+        "title": "Quaker Oats Poly",
+        "price": 15.99,
+        "img": "https://i.ibb.co/NWNP65X/oats.png"
+    },
+    {
+        "id": 11,
+        "title": "Kao Bleach Color",
+        "price": 17.99,
+        "img": "https://i.ibb.co/Ht8ZpGk/color.png"
+    }
+]
