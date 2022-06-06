@@ -6,6 +6,7 @@ import Deals from './Deals';
 import Discount from './Discount';
 import Products from './Products';
 import Shopping from './Shopping';
+import Subscribe from './Subscribe';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <Discount />
             <Shopping />
             <ClientReviews />
+            <Subscribe />
         </div>
     );
 };
