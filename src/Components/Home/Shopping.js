@@ -9,7 +9,9 @@ const Shopping = () => {
     return (
         <div class="hero min-h-screen bg-base-100">
             <div class="hero-content flex-col lg:flex-row-reverse">
-                <img src={shop} class="lg:max-w-lg rounded-lg" />
+                <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="3000">
+                    <img src={shop} class="lg:max-w-lg rounded-lg" />
+                </div>
                 <div className='lg:p-16'>
                     <h1 class="lg:text-5xl font-bold text-[#EF6931] lg:text-left text-center">WHY SHOP WITH US?</h1>
                     <div className='safe-food mt-10 flex items-center'>

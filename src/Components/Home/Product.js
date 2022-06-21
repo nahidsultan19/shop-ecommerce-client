@@ -1,12 +1,12 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
 
 
 const Product = ({ product }) => {
     const { title, price, img } = product;
+
     return (
         <div className=''>
-            <div class="card max-w-md bg-base-100 shadow-xl">
+            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="3000" class="card max-w-md bg-base-100 shadow-xl">
                 <figure class="px-10 pt-10">
                     <img src={img} alt="Shoes" class="rounded-xl bg-base-200 w-48 h-48 p-2" />
                 </figure>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PopularProduct = ({ product }) => {
+const PopularProduct = ({ product, handleAddToCart }) => {
     const { title, price, img } = product;
     return (
         <div class="card max-w-md bg-base-100 shadow-xl">
@@ -11,7 +11,7 @@ const PopularProduct = ({ product }) => {
                 <h2 class="card-title">{title}</h2>
                 <p>${price}</p>
                 <div class="card-actions">
-                    <button class="btn btn-primary">Add To Cart</button>
+                    <button onClick={() => handleAddToCart(title)} class="btn btn-primary">Add To Cart</button>
                 </div>
                 <button class="btn btn-active btn-ghost">Details</button>
             </div>
