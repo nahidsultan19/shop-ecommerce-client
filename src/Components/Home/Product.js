@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import Rating from '../../Shared/Rating';
 
 
 const Product = ({ product }) => {
@@ -6,15 +7,16 @@ const Product = ({ product }) => {
 
     return (
         <div className=''>
-            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="3000" class="card max-w-md bg-base-100 shadow-xl">
-                <figure class="px-10 pt-10">
-                    <img src={img} alt="Shoes" class="rounded-xl bg-base-200 w-48 h-48 p-2" />
+            <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="3000" className="card max-w-md bg-base-100 shadow-xl">
+                <figure className="px-10 pt-10">
+                    <img src={img} alt="Shoes" className="rounded-xl bg-base-200 w-48 h-48 p-2" />
                 </figure>
-                <div class="card-body items-center text-center">
-                    <h2 class="card-title">{title}</h2>
+                <div className="card-body items-center text-center">
+                    <Rating />
+                    <h2 className="card-title">{title}</h2>
                     <p>${price}</p>
-                    <div class="card-actions">
-                        <button class="btn btn-primary">Buy Now</button>
+                    <div className="card-actions">
+                        <button className="btn bg-[#EF6931] border-0">Buy Now</button>
                     </div>
                 </div>
             </div>
