@@ -8,6 +8,7 @@ import Header from './Shared/Header';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AllProducts from './Components/Home/AllProducts';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
+          <Route path='/products' element={<AllProducts />} />
         </Routes>
         <Footer />
         <ToastContainer />
