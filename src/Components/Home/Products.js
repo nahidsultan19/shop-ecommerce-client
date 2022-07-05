@@ -28,12 +28,12 @@ const Products = () => {
     return (
         <div className='bg-red-50'>
             <h2 className='text-center text-3xl font-bold py-12'>New Products</h2>
-            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 px-10'>
+            <div className='grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-4 px-10'>
                 {newProduct.map(product => <Product key={product.id} product={product}></Product>)}
             </div>
             <Link to="products" className='py-10 px-10 flex justify-end'>View All</Link>
             <h2 className='text-center text-3xl font-bold my-12'>Popular Products</h2>
-            <div className='grid grid-cols-1 md:grid-cols-4 gap-4 px-10'>
+            <div className='grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-4 px-10'>
                 {popularProduct.map(product => <PopularProduct product={product} handleAddToCart={handleAddToCart}></PopularProduct>)}
             </div>
             <Link to="products" className='py-10 px-10 flex justify-end'>View All</Link>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ContextProvider } from '../Components/Home/CartContext';
+import Login from '../Components/Login/Login';
 
 const Header = () => {
     const [cart, setCart] = useContext(ContextProvider)
@@ -38,7 +39,7 @@ const Header = () => {
                 </div>
             </div>
             <div className="navbar-end">
-                <Link to='/login'>Login</Link>
+                <label htmlFor="my-modal-6" class="cursor-pointer">Login</label>
                 <div className="dropdown dropdown-end">
                     <label tabIndex="1" className="btn btn-ghost btn-circle">
                         <div className="indicator">
@@ -74,7 +75,16 @@ const Header = () => {
                     </ul>
                 </div>
             </div>
-        </div>
+
+            {/* login modal */}
+            <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+            <div class="modal">
+                <div class="modal-box">
+                    <label for="my-modal-6" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <Login />
+                </div>
+            </div>
+        </div >
     );
 };
 

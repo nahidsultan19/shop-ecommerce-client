@@ -8,9 +8,9 @@ const Banner = () => {
                 <img src={vegetables} className="w-96 rounded-full shadow-2xl mask mask-circle p-20 bg-slate-50" />
                 <div className='text-white'>
                     <h1 className="text-5xl font-bold uppercase">fresh vegetables everyday!</h1>
-                    <p className="py-2">24/7 Customer Support</p>
-                    <p className="py-2">Doorstep Home Delivery</p>
-                    <p className="py-2">Well-equipped & Well-prepared Specialists to Prevent COVID-19</p>
+                    <p className="py-2 text-xl">24/7 Customer Support</p>
+                    <p className="py-2 text-xl">Doorstep Home Delivery</p>
+                    <p className="py-2 text-xl">Well-equipped & Well-prepared Specialists to Prevent COVID-19</p>
                     <button className="btn glass mt-3">shop now</button>
                 </div>
             </div>
