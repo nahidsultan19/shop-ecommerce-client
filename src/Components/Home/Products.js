@@ -22,7 +22,6 @@ const Products = () => {
         console.log('product', selectedItem);
         const newCart = [...cart, selectedItem];
         setCart(newCart);
-        toast('Item successfully added')
     }
 
     return (

@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AllProducts from './Components/Home/AllProducts';
 import Login from './Components/Login/Login';
+import Register from './Components/Login/Register';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/products' element={<AllProducts />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
         </Routes>
         <Footer />
         <ToastContainer />

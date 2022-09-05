@@ -1,29 +1,76 @@
 import React from 'react';
 import auth from '../../firebase.init';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { FcGoogle } from 'react-icons/fc';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
 
 
 
 const Login = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
     const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || '/';
 
     useEffect(() => {
-        if (user) {
-            navigate('/')
+        if (gUser) {
+            navigate(from, { replace: true })
         }
-    }, [user, navigate])
+    }, [gUser, from, navigate])
+
+    if (googleLoading) {
+        return <p>Loading....</p>
+    }
+
+    const onSubmit = data => console.log(data);
+
 
     return (
-        <div className=''>
-            <h2 className='text-xl font-bold text-center text-blue-500'>Login</h2>
-            <button onClick={() => signInWithGoogle()} className='btn btn-ghost btn-outline w-full'>
-                <FcGoogle className='text-2xl' />
-                <p className='ml-3 text-xl'>Google sign in</p>
-            </button>
+        <div className="hero min-h-screen flex-col lg:flex-row-reverse py-20">
+            <div className="card w-full max-w-sm flex-shrink-0 shadow-2xl bg-base-100">
+                <div className="card-body">
+                    <h2 className='text-center text-3xl font-bold'>Login</h2>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input type='email' placeholder='Your Email' className='input input-bordered w-full max-w-xs' {...register("email", {
+                            required: {
+                                value: true,
+                                message: "Email Address is required"
+                            },
+
+                            pattern: {
+                                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                message: 'Provide a valid email'
+                            }
+                        })} />
+                        <p className='text-red-500 mt-2'>{errors.email?.message}</p>
+
+                        <label className='label'>
+                            <span className='label-text'>Password</span>
+                        </label>
+                        <input type='password' placeholder='Your Password' className='input input-bordered w-full max-w-xs'{...register('password', {
+                            required: {
+                                value: 'true',
+                                message: 'Password is required'
+                            },
+                            minLength: {
+                                value: 6,
+                                message: 'Should be 6 characters or longer'
+                            }
+                        })} />
+                        <p className='text-red-500 mt-2'>{errors.password?.message}</p>
+                        <button className='btn w-full mt-4'>Submit</button>
+                    </form>
+                    <p className='w-full max-w-sm'>Need an Account?<Link to='/register' className='btn btn-link'><small>Create an Account</small></Link></p>
+                    <div className="divider">OR</div>
+                    <button onClick={() => signInWithGoogle()} className="btn btn-outline w-full">Continue with google</button>
+                </div>
+            </div>
         </div>
     );
 };
