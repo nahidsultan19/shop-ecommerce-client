@@ -1,6 +1,6 @@
 import React from 'react';
 import auth from '../../firebase.init';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
@@ -10,25 +10,35 @@ import Loading from '../../Shared/Loading';
 
 const Login = () => {
     const [signInWithGoogle, gUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [signInWithEmailAndPassword, user, loading, error,] = useSignInWithEmailAndPassword(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const navigate = useNavigate()
     const location = useLocation()
     let from = location.state?.from?.pathname || '/';
 
+    let errorMessage;
+
     useEffect(() => {
-        if (gUser) {
+        if (gUser || user) {
             navigate(from, { replace: true })
         }
-    }, [gUser, from, navigate])
+    }, [gUser, user, from, navigate])
 
 
-    if (googleLoading) {
+    if (loading || googleLoading) {
         return <Loading />
     }
 
+    if (error || googleError) {
+        errorMessage = <p className='text-red-500'>Error: {googleError?.message || error?.message}</p>
+    }
 
-    const onSubmit = data => console.log(data);
+
+    const onSubmit = async data => {
+        await signInWithEmailAndPassword(data.email, data.password);
+
+    };
 
 
     return (
@@ -67,6 +77,7 @@ const Login = () => {
                             }
                         })} />
                         <p className='text-red-500 mt-2'>{errors.password?.message}</p>
+                        {errorMessage}
                         <button className='btn btn-success font-bold text-lg text-white w-full mt-4'>Login</button>
                     </form>
                     <p className='w-full max-w-sm'>Need an Account?<Link to='/register' className='btn btn-link'><small>Create an Account</small></Link></p>

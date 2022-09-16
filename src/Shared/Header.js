@@ -1,10 +1,15 @@
-import React from 'react';
+import { signOut } from 'firebase/auth';
+import React, { useRef } from 'react';
 import { useContext } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import { ContextProvider } from '../Components/Home/CartContext';
+import auth from '../firebase.init';
 
 const Header = () => {
     const [cart, setCart] = useContext(ContextProvider)
+    const [user] = useAuthState(auth);
+    console.log(user);
     const menu = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/about'>About</Link></li>
@@ -12,6 +17,10 @@ const Header = () => {
         <li><Link to='/services'>Services</Link></li>
 
     </>
+
+    const logout = () => {
+        signOut(auth);
+    }
     return (
         <div className="navbar bg-gradient-to-r from-orange-500 to-orange-300 fixed z-10">
             <div className="navbar-start">
@@ -38,7 +47,7 @@ const Header = () => {
                 </div>
             </div>
             <div className="navbar-end">
-                <Link to='/login' class="cursor-pointer">Login</Link>
+                {user ? (user.displayName) : (<Link to='/login' class="cursor-pointer">Login</Link>)}
                 <div className="dropdown dropdown-end">
                     <label tabIndex="1" className="btn btn-ghost btn-circle">
                         <div className="indicator">
@@ -59,7 +68,7 @@ const Header = () => {
                 <div className="dropdown dropdown-end">
                     <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src="https://api.lorem.space/image/face?hash=33791" />
+                            <img src={user ? (user.photoURL || "https://api.lorem.space/image/face?hash=33791") : ("https://api.lorem.space/image/face?hash=33791")} />
                         </div>
                     </label>
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -70,7 +79,7 @@ const Header = () => {
                             </a>
                         </li>
                         <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        <li>{user ? <a onClick={logout}>Logout</a> : ''}</li>
                     </ul>
                 </div>
             </div>
