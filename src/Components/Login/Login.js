@@ -4,6 +4,7 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import Loading from '../../Shared/Loading';
 
 
 
@@ -21,18 +22,20 @@ const Login = () => {
         }
     }, [gUser, from, navigate])
 
+
     if (googleLoading) {
-        return <p>Loading....</p>
+        return <Loading />
     }
+
 
     const onSubmit = data => console.log(data);
 
 
     return (
-        <div className="hero min-h-screen flex-col lg:flex-row-reverse py-20">
+        <div className="hero-content min-h-screen flex-col lg:flex-row-reverse py-20">
             <div className="card w-full max-w-sm flex-shrink-0 shadow-2xl bg-base-100">
                 <div className="card-body">
-                    <h2 className='text-center text-3xl font-bold'>Login</h2>
+                    {/* <h2 className='text-center text-3xl font-bold'>Login</h2> */}
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <label class="label">
                             <span class="label-text">Email</span>
@@ -64,7 +67,7 @@ const Login = () => {
                             }
                         })} />
                         <p className='text-red-500 mt-2'>{errors.password?.message}</p>
-                        <button className='btn w-full mt-4'>Submit</button>
+                        <button className='btn btn-success font-bold text-lg text-white w-full mt-4'>Login</button>
                     </form>
                     <p className='w-full max-w-sm'>Need an Account?<Link to='/register' className='btn btn-link'><small>Create an Account</small></Link></p>
                     <div className="divider">OR</div>
