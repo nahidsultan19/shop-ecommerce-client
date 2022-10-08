@@ -7,13 +7,13 @@ import loyalty from '../../assets/images/loyalty 1.png';
 
 const Shopping = () => {
     return (
-        <div class="hero min-h-screen bg-base-100">
-            <div class="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero min-h-screen bg-base-100">
+            <div className="hero-content flex-col lg:flex-row-reverse">
                 <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="3000">
-                    <img src={shop} class="lg:max-w-lg rounded-lg" />
+                    <img src={shop} className="lg:max-w-lg rounded-lg" />
                 </div>
                 <div className='lg:p-16'>
-                    <h1 class="lg:text-5xl font-bold text-[#EF6931] lg:text-left text-center">WHY SHOP WITH US?</h1>
+                    <h1 className="lg:text-5xl font-bold text-[#EF6931] lg:text-left text-center">WHY SHOP WITH US?</h1>
                     <div className='safe-food mt-10 flex items-center'>
                         <img src={safeFood} alt="" className='bg-[#EF6931] mask mask-circle p-2 w-16' />
                         <div className='food-text px-4 text-[#EF6931]'>

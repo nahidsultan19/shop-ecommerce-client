@@ -1,5 +1,4 @@
 import { signOut } from 'firebase/auth';
-import React, { useRef } from 'react';
 import { useContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
@@ -7,9 +6,17 @@ import { ContextProvider } from '../Components/Home/CartContext';
 import auth from '../firebase.init';
 
 const Header = () => {
-    const [cart, setCart] = useContext(ContextProvider)
+    const [cart] = useContext(ContextProvider)
     const [user] = useAuthState(auth);
-    console.log(user);
+
+    // const total = cart.reduce((prev, curr) => prev + curr, 0)
+    let total = 0;
+    for (const product of cart) {
+        total = total + product;
+    }
+    const tax = (total * 10 / 100).toFixed(2);
+    const grand = total + parseFloat(tax);
+
     const menu = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/about'>About</Link></li>
@@ -21,6 +28,8 @@ const Header = () => {
     const logout = () => {
         signOut(auth);
     }
+
+
     return (
         <div className="navbar bg-gradient-to-r from-orange-500 to-orange-300 fixed z-10">
             <div className="navbar-start">
@@ -34,7 +43,7 @@ const Header = () => {
                     </ul>
 
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">SHOP.V</a>
+                <Link to="/" className="btn btn-ghost normal-case text-xl">SHOP.V</Link>
                 <div className='hidden lg:flex'>
                     <ul className="menu menu-horizontal p-0">
                         {menu}
@@ -47,7 +56,7 @@ const Header = () => {
                 </div>
             </div>
             <div className="navbar-end">
-                {user ? (user.displayName) : (<Link to='/login' class="cursor-pointer">Login</Link>)}
+                {user ? `Welcome, ${(user.displayName)}` : ''}
                 <div className="dropdown dropdown-end">
                     <label tabIndex="1" className="btn btn-ghost btn-circle">
                         <div className="indicator">
@@ -58,7 +67,9 @@ const Header = () => {
                     <div tabIndex="2" className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
                         <div className="card-body">
                             <span className="font-bold text-lg">{cart.length} Items</span>
-                            <span className="text-info">Subtotal: $999</span>
+                            <span className="text-info">total: $ {total.toFixed(2)}</span>
+                            <span className="text-info">Tax: $ {tax}</span>
+                            <span className="text-info">Grand Total: $ {grand}</span>
                             <div className="card-actions">
                                 <button className="btn btn-primary btn-block">View cart</button>
                             </div>
@@ -79,7 +90,7 @@ const Header = () => {
                             </a>
                         </li>
                         <li><a>Settings</a></li>
-                        <li>{user ? <a onClick={logout}>Logout</a> : ''}</li>
+                        <li>{user ? <a onClick={logout}>Logout</a> : (<Link to='/login' className="cursor-pointer">Login</Link>)}</li>
                     </ul>
                 </div>
             </div>

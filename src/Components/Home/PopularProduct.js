@@ -13,7 +13,7 @@ const PopularProduct = ({ product, handleAddToCart }) => {
                 <h2 className="card-title">{title}</h2>
                 <p>${price}</p>
                 <div className="card-actions">
-                    <button onClick={() => handleAddToCart(title)} className="btn bg-[#EF6931] border-0 w-full">Add To Cart</button>
+                    <button onClick={() => handleAddToCart(price, title, img)} className="btn bg-[#EF6931] border-0 w-full">Add To Cart</button>
                 </div>
                 <button className="btn btn-active btn-ghost">Details</button>
             </div>

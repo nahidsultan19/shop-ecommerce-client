@@ -33,10 +33,8 @@ const Register = () => {
     };
     return (
         <div className="hero min-h-screen flex-col lg:flex-row-reverse py-20">
-            <div className="card w-full max-w-sm flex-shrink-0 shadow-2xl bg-base-100">
+            <div className="w-full max-w-sm flex-shrink-0 shadow-xl bg-base-100">
                 <div className="card-body">
-                    <h2 className='text-center text-3xl font-bold text-indigo-500'>Register Now</h2>
-
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">

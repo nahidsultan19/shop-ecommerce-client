@@ -12,6 +12,7 @@ const Products = () => {
     const productFetchRef = useRef(false);
     const newProduct = products.slice(0, 8);
     const popularProduct = products.slice(7, 11);
+
     useEffect(() => {
         // only one time product render
         if (productFetchRef.current) return;
@@ -26,7 +27,6 @@ const Products = () => {
 
 
     const handleAddToCart = (selectedItem) => {
-        // console.log('product', selectedItem);
         const newCart = [...cart, selectedItem];
         setCart(newCart);
     }

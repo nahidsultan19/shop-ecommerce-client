@@ -43,12 +43,11 @@ const Login = () => {
 
     return (
         <div className="hero-content min-h-screen flex-col lg:flex-row-reverse py-20">
-            <div className="card w-full max-w-sm flex-shrink-0 shadow-2xl bg-base-100">
+            <div className="w-full max-w-sm flex-shrink-0 shadow-xl bg-base-100">
                 <div className="card-body">
-                    {/* <h2 className='text-center text-3xl font-bold'>Login</h2> */}
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <label class="label">
-                            <span class="label-text">Email</span>
+                        <label className="label">
+                            <span className="label-text">Email</span>
                         </label>
                         <input type='email' placeholder='Your Email' className='input input-bordered w-full max-w-xs' {...register("email", {
                             required: {
