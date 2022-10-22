@@ -9,6 +9,7 @@ const Header = () => {
     const [cart] = useContext(ContextProvider)
     const [user] = useAuthState(auth);
 
+    // cart calculation 
     // const total = cart.reduce((prev, curr) => prev + curr, 0)
     let total = 0;
     for (const product of cart) {
@@ -22,6 +23,7 @@ const Header = () => {
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/contact'>Contact</Link></li>
         <li><Link to='/services'>Services</Link></li>
+        {user && <li><Link to='/dashboard'>Dashboard</Link></li>}
 
     </>
 
