@@ -2,7 +2,7 @@ import React from 'react';
 import Rating from '../../Shared/Rating';
 
 const PopularProduct = ({ product, handleAddToCart }) => {
-    const { title, price, img } = product;
+    const { id, title, price, img } = product;
     return (
         <div className="card max-w-md bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
@@ -13,7 +13,7 @@ const PopularProduct = ({ product, handleAddToCart }) => {
                 <h2 className="card-title">{title}</h2>
                 <p>${price}</p>
                 <div className="card-actions">
-                    <button onClick={() => handleAddToCart(price, title, img)} className="btn bg-[#EF6931] border-0 w-full">Add To Cart</button>
+                    <button onClick={() => handleAddToCart(id, price, title, img)} className="btn bg-[#EF6931] border-0 w-full">Add To Cart</button>
                 </div>
                 <button className="btn btn-active btn-ghost">Details</button>
             </div>

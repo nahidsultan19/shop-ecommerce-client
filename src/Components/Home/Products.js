@@ -27,8 +27,14 @@ const Products = () => {
 
 
     const handleAddToCart = (selectedItem) => {
-        const newCart = [...cart, selectedItem];
-        setCart(newCart);
+        let exists = cart.find(item => item.id === selectedItem.id)
+        if (!exists) {
+            const newCart = [...cart, selectedItem];
+            setCart(newCart);
+        } else {
+            alert('Already exist')
+        }
+
     }
 
     return (
